@@ -1,0 +1,63 @@
+/* You can add global styles to this file, and also import other style files */
+.sticky {
+    position: relative;
+    height: 50px;
+}
+
+.anime {
+    position: fixed;
+    top: 205px;
+    left: 130px;
+    animation: playmusic 1.5s ease
+}
+
+@keyframes playmusic {
+    from {
+        left: 750px;
+    }
+
+    to {
+        left: 210px;
+    }
+}
+
+.font-img {
+    width: 420px;
+    height: 220px;
+}
+
+@media only screen and (max-width: 780px) {
+    .sticky {
+        position: relative;
+        height: 50px;
+        max-width: 10px;
+    }
+    
+    .anime {
+        position: fixed;
+        top: 205px;
+        left: 300px;
+        animation: playmusic 1.5s ease
+    }
+    
+    @keyframes playmusic {
+        from {
+            right: 750px;
+        }
+    
+        to {
+            right: 10px;
+        }
+    }
+    
+    .font-img {
+        width: 100%;
+    }
+    
+    
+}
+
+
+@media only screen and (max-width: 1200px) {
+
+}

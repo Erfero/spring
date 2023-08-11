@@ -1,0 +1,41 @@
+<div [@fadeInAnimation] class="position-relative dimnu" style="margin: 0rem; padding: 0rem">
+    <app-search (searchAlbums)="search($event)"></app-search>
+    <div class="row content">
+        <div class="col-sm-4" video>
+            <!-- Albums Details -->
+            <app-album-details [album]="selectedAlbum" (onPlay)="playParent($event)"></app-album-details>
+          </div>
+        <div class="col-sm-8 music">
+            <app-paginate (setPaginate)="onSetPaginage($event)"></app-paginate>
+            <h1 style="color:black">{{ titlePage }} </h1>
+            <ng-container *ngIf="albums && albums.length; else notfound">
+                <!-- <button type="button" class="btn btn-lg btn-danger">Sun</button> -->
+                <div class="card container p-5 my-5 bg-dark text-white" *ngFor="let album of albums; let i = index;">
+                    <div class="card-header text-bg-warning" style="font-size: 1.5rem; font-weight: 700;" id="{{ album.id }}">
+                        {{ album.ref }} <a *ngIf="status === album.id">[play]</a>
+                    </div>
+                    <div class="card-body">
+                        <a type="button" class="lien btn btn-outline-primary" routerLink="/album/{{album.id}}" style="margin-block: 1rem;">{{ album.title }}</a>
+                        <p class="card-text">{{ album.description }}</p>
+                        <a *ngFor="let item of album.tags" class="btn btn-outline-primary mx-1" href="#" role="button">{{
+                            item }}</a><br>
+    
+                        <br><a class="btn btn-outline-warning mx-1" href="#" role="button">en</a>
+                        <img class="glyph-icon mx-1" width="20rem" src="../../assets/si-glyph-heart.svg" />
+                        <small>{{ album.like }} </small>
+                        <img class="glyph-icon mx-1" width="20rem" src="../../assets/si-glyph-timer.svg" />
+                        <small>{{ album.duration }} min</small>
+                        <button href="#" (click)="onSelect(album)" class="mx-2 btn btn-outline-warning">Details</button>
+                    </div>
+                </div><!-- .card -->
+            </ng-container>
+            <ng-template #notfound>
+                <p class="Fs-2" style="display:flex; align-items:center; justify-content: center; border: 2px solid rgb(0, 0, 0,); border-radius: 15px; margin-block: 5rem; margin-inline-end: 25rem; padding: 8rem; background-color: #212529; color: white; font-size: 3rem;">
+                    404 notfound !
+                    Retry <i class="Fas Fa history p-4" style="vertical-align: middle;"></i>
+                </p>
+            </ng-template>
+            <app-paginate (setPaginate)="onSetPaginage($event)"></app-paginate>
+        </div><!-- .music -->
+    </div>
+</div>

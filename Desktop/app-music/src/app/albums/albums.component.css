@@ -1,0 +1,18 @@
+.search {
+    top: -50px;
+    right: 0;
+}
+
+.lien {
+    text-decoration: none;
+}
+
+@media screen and (max-width: 780px) {
+
+    .dimnu {
+        width: 60%;
+    }
+}
+
+
+@media screen and (max-width: 1200px) {}
