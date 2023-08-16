@@ -1,0 +1,40 @@
+<!-- <pre *ngIf="albums"> {{ Albums | json }}</pre> -->
+<div [@fadeInAnimation]>
+    <p *ngIf="message" class="alert alert-success position-relative" style="background-color: black; color: white;">
+        {{ message }}
+        <button class="btn btn-close position-absolute end-0" (click)="message = undefined" style="background-color: white; margin-right: 5px;" aria-label="Close"></button>
+    </p>
+    <p>
+        <button class="btn btn-warning" routerLink="/admin/add" style="margin: 1rem">Add Album</button>
+    </p>
+    <app-paginate (setPaginate)="onSetPaginate($event)"></app-paginate>
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">update</th>
+                <th scope="col">name</th>
+                <th scope="col">title</th>
+                <th scope="col">duration</th>
+                <th scope="col">delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let album of albums">
+                <th scope="row">{{ album.id }} </th>
+                <td>
+                    <button type="button" class="btn btn-outline-warning">Update</button>
+                </td>
+                <td>{{ album.name}} </td>
+                <td>{{ album.title }} </td>
+                <td>{{ album.duration }} </td>
+                <td>
+                    <button class="btn btn-outline-danger">delete</button>
+                </td>
+            </tr>
+        </tbody>
+    
+    </table>
+    <app-paginate (setPaginate)="onSetPaginate($event)"></app-paginate>
+
+</div>

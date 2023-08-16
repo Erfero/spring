@@ -1,0 +1,56 @@
+<div [@fadeInAnimation] class="container-sm" [hidden]="submitted"
+    style="border: 2px solid rgb(0, 0, 0,); border-radius: 15px; margin-block: 5rem; padding: 3rem; background-color: #212529; color: white;">
+
+    <pre>{{ Music | json }}</pre>
+
+    <form action="" #musicForm="ngForm" (ngSubmit)="onSubmit(musicForm)">
+        <div class="form-group">
+            <label for="name" style="font-weight: 900; font-size: 1.5rem;">Nom de l'album :</label>
+            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="Music.name" required
+                #name="ngModel" placeholder="Nom">
+            <div *ngIf="name.touched && (name.invalid || name.pristine)" class="alert alert-danger"
+                style="background-color: aquamarine; padding: 3px;">Le nom de l'album
+                est requis</div>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="auteur" style="font-weight: 900; font-size: 1.5rem;">Auteur :</label>
+            <input type="text" class="form-control" id="auteur" name="auteur" [(ngModel)]="Music.auteur" required
+                #auteur="ngModel" placeholder="Auteur">
+            <div *ngIf="auteur.touched && (auteur.invalid || auteur.pristine)" class="alert alert-danger"
+                style="background-color: aquamarine; padding: 3px;">Le nom de
+                l'auteur est requis</div>
+        </div>
+        <br>
+        <div class="form-group" style="display: flex; flex-direction: column;">
+            <label for="style" style="font-weight: 900; font-size: 1.5rem;">Style de musique :</label>
+            <select name="style" id="style" [(ngModel)]="Music.style" style="padding-block: 0.5rem"
+                class="form-control">
+                <option *ngFor="let genre of genres" [value]="genre" required> {{ genre }} </option>
+            </select>
+            <br>
+        </div>
+        <button type="submit" class="btn btn-outline-warning" [disabled]="musicForm.invalid">Add albums</button>
+    </form>
+</div>
+
+<div class="container-sm" [hidden]="!submitted"
+    style="border: 2px solid rgb(0, 0, 0,); border-radius: 15px; margin-block: 10rem; padding: 3rem; background-color: #212529; color: white;">
+
+    <h2 style="text-align: center; margin-bottom: 2rem; font-weight: 900; font-size: 2rem ">Vous avez soumis l'album :
+    </h2>
+    <div class="row">
+        <div class="col-md-3" style="font-weight: 900; font-size: 1.5rem;">Nom de l'album :</div>
+        <div class="col-md-9"> <strong>{{ Music.name }}</strong></div>
+    </div>
+    <div class="row">
+        <div class="col-md-3" style="font-weight: 900; font-size: 1.5rem;">Auteur de l'album :</div>
+        <div class="col-md-9"> <strong>{{ Music.auteur }}</strong></div>
+    </div>
+    <div class="row">
+        <div class="col-md-3" style="font-weight: 900; font-size: 1.5rem;">Style de music :</div>
+        <div class="col-md-9"> <strong>{{ Music.style }}</strong></div>
+    </div>
+    <br>
+    <button type="button" class="btn btn-outline-warning" (click)="submitted = false">Editer</button>
+</div>

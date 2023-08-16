@@ -1,0 +1,42 @@
+<p>Name: {{ musicForm.get("name")?.value }}</p>
+<p>Auteur: {{ musicForm.get("auteur")?.value }}</p>
+<p>Style de music: {{ musicForm.get("style")?.value }}</p>
+
+<div class="container-sm" [@fadeInAnimation]
+    style="border: 2px solid rgb(0, 0, 0,); border-radius: 15px; margin-block: 5rem; padding: 3rem; background-color: #212529; color: white;">
+    <form action="" [formGroup]="musicForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="name" style="font-weight: 900; font-size: 1.5rem;">Nom de l'album :</label>
+            <input type="text" class="form-control" id="name" name="name" formControlName="name" placeholder="Nom"
+                required>
+            <div class="alert alert-danger" *ngIf="name?.touched && (name?.invalid || name?.pristine)"
+                style="background-color: aquamarine; padding: 3px;">
+                <p *ngIf="name?.errors?.['required']">Le nom de l'album est requis</p>
+                <p *ngIf="name?.errors?.['minlength']">Le nom de l'album doit contenir {{name?.errors?.['minlength']?.['requiredLength']}} caractères(s). Vous en avez fournis {{name?.errors?.['minlength']?.["actualLength"]}}</p>
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="auteur" style="font-weight: 900; font-size: 1.5rem;">Auteur :</label>
+            <input type="text" class="form-control" id="auteur" name="auteur" formControlName="auteur"
+                placeholder="Auteur" required>
+            <div class="alert alert-danger" *ngIf="name?.touched && (name?.invalid || name?.pristine)"
+                style="background-color: aquamarine; padding: 3px;">Le nom de l'auteur est requis
+            </div>
+        </div>
+        <br>
+        <div class="form-group" style="display: flex; flex-direction: column;">
+            <label for="style" style="font-weight: 900; font-size: 1.5rem;">Style de musique :</label>
+            <select name="style" id="style" style="padding-block: 0.5rem" class="form-control" formControlName="style">
+                <option *ngFor="let genre of genres" [value]="genre"> {{ genre }} </option>
+            </select>
+            <br>
+        </div>
+        <button type="submit" [disabled]="musicForm.invalid" class="btn btn-outline-warning">Add albums</button>
+    </form>
+    <br>
+    <p><input class="mb-2" type="text" [formControl]="search" placeholder="Search" style="border-radius: 5px;"></p>
+    <br>
+    <p>{{ search.value }}</p>
+</div>
+

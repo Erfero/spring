@@ -1,0 +1,19 @@
+<div [@fadeInAnimation] class="card" *ngIf="album" style="margin-block: 3rem; margin-inline: 3rem; background-color: #212529; color: #eee;">
+    <div class="card-header" style="background-color: black; color: white; font-size: 3rem; font-weight: 600;">
+      Featured
+    </div>
+    <div class="card-body">
+      <h5 class="card-title" style="font-size: 2rem; color: white;">{{album.title}}</h5>
+      <h6><strong style="font-size: 1.1rem; color: white">Name: </strong>{{ album.name}}</h6>
+      <p class="card-text">{{album.description}}</p>
+      <p><strong style="font-size: 1.1rem; color: white">Duration: </strong>{{album.duration || 0 }} min</p>
+      <p><strong style="font-size: 1.1rem; color: white">Like: </strong>{{ album.like || 'Pas de Likes'}}</p>
+      <ul *ngIf="album.tags" class="list-inline">
+        <li class="list-inline-item" *ngFor="let tag of album.tags">
+          <span class="badge bg-warning size">{{tag}}</span>
+        </li>
+      </ul>
+      <img *ngIf="album.url" width="300" src="{{album.url}}" class="rounded mx-auto d-block" alt="...">
+    </div>
+  </div>
+  

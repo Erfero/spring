@@ -1,0 +1,25 @@
+/* .myImage {
+    background-image: url("../assets/9LIZ.gif");
+} */
+
+.hover:hover {
+    color: white;
+    background-color: black;
+    
+
+}
+.hover {
+    
+    /* padding: 5px; */
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 1.1rem;
+
+}
+
+.mod {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}

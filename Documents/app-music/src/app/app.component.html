@@ -1,0 +1,51 @@
+<!-- <app-album></app-album> -->
+
+<div [@fadeInAnimation] class="container-fuild principal bg-secondary myImage">
+
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand hover" href="#" style="font-weight: 600; font-style: italic; padding: 10px;">Good
+                Music</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mynavbar">
+                <ul class="navbar-nav mr-auto mod">
+                    <li class="nav-item active">
+                        <a class="nav-link hover" routerLink="/albums">Home
+                            <span class="sr-only"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link hover" routerLink="/login" routerLinkActive="active">Se connecter
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link hover" routerLink="/admin" routerLinkActive="active">Admin
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link hover" routerLink="/template" routerLinkActive="active">Template Form
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link hover" routerLink="/reactif" routerLinkActive="active">Reactif Form
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <li *ngIf="count" style="color: white; font-size: 1rem; list-style: none;"> <strong> {{ count }}</strong>
+            </li>
+        </div>
+    </nav>
+    <app-audip-player></app-audip-player>
+    <router-outlet></router-outlet>
+
+    <!-- <app-albums></app-albums> -->
+
+
+    <!-- <app-first-comp ></app-first-comp> -->
+    <!-- <app-second-comp></app-second-comp> -->
+
+
+</div>

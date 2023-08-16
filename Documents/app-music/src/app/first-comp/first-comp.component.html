@@ -1,0 +1,8 @@
+<div [@fadeInAnimation]>
+    <form  (ngSubmit)='onButtonClick(formLogin)' #formLogin="ngForm" class="row">
+        <div class="mb-3 mt-3">
+          <input class="form-control" id="example" placeholder="Enter un texte" name="texte" ngModel required type="texte" >
+        </div>
+        <button [disabled]="formLogin.invalid" type="submit" class="btn btn-primary">Submit</button>
+      </form>
+  </div>

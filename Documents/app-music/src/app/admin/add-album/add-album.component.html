@@ -1,0 +1,94 @@
+<div [@fadeInAnimation] class="container-sm"
+    style="border: 2px solid rgb(0, 0, 0,); border-radius: 15px; margin-block: 5rem; padding: 3rem; background-color: #212529; color: white;">
+    <form action="" [formGroup]="albumForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="name" style="font-weight: 900; font-size: 1.5rem;">Name :</label>
+            <input type="text" class="form-control" id="name" formControlName="name" required>
+            <div *ngIf="name?.invalid && name?.touched" class="alert alert-danger"
+                style="background-color: aquamarine; padding: 3px;">
+                <p *ngIf="name?.errors?.['required']">Ce champs est requis</p>
+                <p *ngIf="name?.errors?.['minlength']">Ce champs doit avoir une longeur minimale de {{
+                    name?.errors?.["minlength"]?.requiredLength}} caractères.</p>
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="title" style="font-weight: 900; font-size: 1.5rem;">Title :</label>
+            <input type="text" class="form-control" id="title" formControlName="title" required>
+            <div *ngIf="title?.invalid && title?.touched" class="alert alert-danger"
+                style="background-color: aquamarine; padding: 3px;">
+                <p *ngIf="title?.errors?.['required']">Ce champs est requis</p>
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="ref" style="font-weight: 900; font-size: 1.5rem;">Ref :</label>
+            <input type="text" class="form-control" id="ref" formControlName="ref" required>
+            <div *ngIf="ref?.invalid && ref?.touched" class="alert alert-danger"
+                style="background-color: aquamarine; padding: 3px;">
+                <p *ngIf="ref?.errors?.['required']">Ce champs est requis</p>
+                <p *ngIf="ref?.errors?.['pattern']">Ce champs doit contenir le format d'expression régulière. <strong><em>{{
+                    ref?.errors?.["pattern"]?.requiredLength }}</em></strong> <a
+                        href="https://developer.mozilla.org/fr/docs/Glossary/Regular_expression" target="_blank"
+                        rel="noopener noreferrer">Cliquez sur le lien pour en savoir plus sur les expressions
+                        regulières</a></p>
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="duration" style="font-weight: 900; font-size: 1.5rem;">Duration :</label>
+            <input type="text" class="form-control" id="duration" formControlName="duration" required>
+            <div *ngIf="duration?.invalid && duration?.touched" class="alert alert-danger"
+                style="background-color: aquamarine; padding: 3px;">
+                <p *ngIf="duration?.errors?.['required']">Ce champs est requis</p>
+                <p *ngIf="duration?.errors?.['pattern']">Ce champs doit contenir le format d'expression régulière.
+                    <strong><em>{{
+                            duration?.errors?.["pattern"]?.requiredLength }}</em></strong> <a
+                        href="https://developer.mozilla.org/fr/docs/Glossary/Regular_expression" target="_blank"
+                        rel="noopener noreferrer">Cliquez sur le lien pour en savoir plus sur les expressions
+                        regulières</a></p>
+                <p *ngIf="duration?.errors?.['max']">La valeur saisie ne doit pas être supérieure à {{ duration?.errors?.["max"]?.max }} caractères.</p>
+                <p>{{ duration?.errors | json }}</p>
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="description" style="font-weight: 900; font-size: 1.5rem;">Description :</label>
+            <textarea name="description" cols="30" rows="10" class="form-control" id="description"
+                formControlName="description" required></textarea>
+            <div *ngIf="description?.invalid && description?.touched" class="alert alert-danger"
+                style="background-color: aquamarine; padding: 3px;">
+                <p *ngIf="description?.errors?.['required']">Ce champs est requis</p>
+            </div>
+        </div>
+        <div class="form-group" formArrayName="tags">
+            <h2>Etiquettes de l'ablbums</h2>
+            <button type="button" (click)="addTags()" style="margin-bottom: 1rem;" class="btn btn-warning"> + Ajouter une étiquette</button>
+            <br>
+            <div class="form-group btn btn-outline-warning" *ngFor="let tag of tags.controls; let i = index" style="margin: 10px;">
+                <label for="tags-{{ i }}" style="margin-right: 1rem;">Tags : </label>
+                <input type="text" id="tags-{{ i }}" name="tags" [formControlName]="i" style="border-radius: 5px;">
+            </div>
+        </div>
+        <br>
+        <button type="submit" [disabled]="albumForm.invalid" class="btn btn-outline-warning">Add albums</button>
+    </form>
+</div>
+
+
+<!-- <form [formGroup]="albumForm">
+    <div class="form-group">
+        <label for="name">Name :</label>
+        <input formControlName="name" type="text" class="form-control" id="name" aria-describedby="emailHelp"
+            placeholder="Enter artist name">
+        <!-- Permet de valider les règles définies dans le TypeScript -->
+<!-- <div *ngIf="name.invalid && name.touched" class="alert alert-danger">
+            <div *ngIf="name.errors.required">
+                Name is required
+            </div>
+            <div *ngIf="name.errors.minlength">
+                Name must be at least 5 characters long.
+            </div>
+        </div>
+    </div>
+</form> -->
