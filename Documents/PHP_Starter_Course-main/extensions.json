@@ -1,0 +1,24 @@
+{
+  "identifier": {
+    "id": "bmewburn.vscode-intelephense-client",
+    "uuid": "ffda6552-0ad5-431b-a4fa-0905a7e4f3f0"
+  },
+  "version": "1.9.5",
+  "location": {
+    "$mid": 1,
+    "path": "/c:/Users/tiburce.kouagou/.vscode/extensions/bmewburn.vscode-intelephense-client-1.9.5",
+    "scheme": "file"
+  },
+  "relativeLocation": "bmewburn.vscode-intelephense-client-1.9.5",
+  "metadata": {
+    "id": "ffda6552-0ad5-431b-a4fa-0905a7e4f3f0",
+    "publisherId": "3209eeb0-2b1a-4484-8c83-2627b29db88e",
+    "publisherDisplayName": "Ben Mewburn",
+    "targetPlatform": "undefined",
+    "isApplicationScoped": false,
+    "updated": true,
+    "isPreReleaseVersion": false,
+    "installedTimestamp": 1675863254511,
+    "preRelease": false
+  }
+},
